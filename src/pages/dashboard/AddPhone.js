@@ -1,7 +1,11 @@
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { useForm } from "react-hook-form";
+import useHeaderGET from "../../hooks/useHeaderGET";
+import Loading from "../shared/Loading";
 
 const AddPhone = () => {
+  const header = useHeaderGET();
   const {
     register,
     handleSubmit,
@@ -9,9 +13,32 @@ const AddPhone = () => {
     reset,
   } = useForm();
 
+  const { data: options, isLoading } = useQuery({
+    queryKey: ["categories"],
+    queryFn: async () => {
+      try {
+        const res = await fetch(
+          `${process.env.REACT_APP_API_URl}/categories-add-product`,
+          {
+            headers: header,
+          }
+        );
+        const data = await res.json();
+        return data;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  });
+
   const handelAddPhone = (data) => {
     console.log(data);
   };
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <section className="m-10">
       <form onSubmit={handleSubmit(handelAddPhone)}>
@@ -123,19 +150,51 @@ const AddPhone = () => {
               <p className="text-red-500">{errors.sellerPhone.message}</p>
             )}
           </div>
+          <div>
+            <label className="label">
+              <span className="label-text">Condition Type</span>
+            </label>
+            <select
+              {...register("condition")}
+              className="select select-ghost w-full max-w-xs"
+            >
+              <option value="good">Good</option>
+              <option value="excellent">Excellent</option>
+              <option value="fair">Fair</option>
+            </select>
+          </div>
+          <div>
+            <label className="label">
+              <span className="label-text">Category</span>
+            </label>
+            <select
+              {...register("categoryId", {
+                required: true,
+              })}
+              className="select select-ghost w-full max-w-xs"
+            >
+              {options?.map((option, idx) => (
+                <option key={option?._id} value={idx}>
+                  {option?.name}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
-        <div>
+        <div className="form-control w-full ">
           <label className="label">
-            <span className="label-text">Condition Type</span>
+            <span className="label-text">Phone Photo</span>
           </label>
-          <select
-            {...register("condition")}
-            className="select select-ghost w-full max-w-xs"
-          >
-            <option value="good">Good</option>
-            <option value="excellent">Excellent</option>
-            <option value="fair">Fair</option>
-          </select>
+          <input
+            type="file"
+            {...register("image", {
+              required: "Photo is Required",
+            })}
+            className="file-input file-input-bordered file-input-secondary w-full max-w-xs"
+          />
+          {errors.image && (
+            <p className="text-red-500">{errors.image.message}</p>
+          )}
         </div>
         <div>
           <label className="label">
