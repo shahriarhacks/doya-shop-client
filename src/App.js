@@ -7,7 +7,7 @@ import router from "./routes/router";
 function App() {
   return (
     <div>
-      <ToastContainer />
+      <ToastContainer position="top-center" />
       <RouterProvider router={router} />
     </div>
   );
