@@ -1,13 +1,21 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/AuthProvider";
+import useToken from "../../hooks/useToken";
 
 const Register = () => {
   const { createUser, updateUser } = useContext(AuthContext);
   const [signUpError, setSignUpError] = useState("");
   const [createdUserEmail, setCreatedUserEmail] = useState("");
+  const { token } = useToken(createdUserEmail);
+  const navigate = useNavigate();
+
+  if (token) {
+    navigate("/");
+  }
+
   const {
     register,
     handleSubmit,
@@ -44,7 +52,8 @@ const Register = () => {
       .then((data) => {
         if (data?.acknowledged) {
           setCreatedUserEmail(email);
-          toast.success(`Created Successfully user email ${data?.email}`);
+          reset();
+          toast.success(`Created Successfully user email ${email}`);
         }
       });
   };
