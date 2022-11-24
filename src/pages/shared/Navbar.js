@@ -17,24 +17,36 @@ const Navbar = () => {
   const menuItems = (
     <>
       <li className="font-semibold">
-        <NavLink to="/">Home</NavLink>
+        <NavLink className="rounded" to="/">
+          Home
+        </NavLink>
       </li>
       <li className="font-semibold">
-        <NavLink to="/about">About</NavLink>
+        <NavLink className="rounded" to="/about">
+          About
+        </NavLink>
       </li>
       <li className="font-semibold">
-        <NavLink to="/categories">Categories</NavLink>
+        <NavLink className="rounded" to="/categories">
+          Categories
+        </NavLink>
       </li>
       <li className="font-semibold">
-        <NavLink to="/blog">Blog</NavLink>
+        <NavLink className="rounded" to="/blog">
+          Blog
+        </NavLink>
       </li>
       <li className="font-semibold">
-        <NavLink to="/contact">Contact</NavLink>
+        <NavLink className="rounded" to="/contact">
+          Contact
+        </NavLink>
       </li>
       {user && user.uid ? (
         <>
           <li className="font-semibold">
-            <NavLink to="/dashboard">Dashboard</NavLink>
+            <NavLink className="rounded" to="/dashboard">
+              Dashboard
+            </NavLink>
           </li>
 
           <li className="font-semibold">
@@ -44,10 +56,14 @@ const Navbar = () => {
       ) : (
         <>
           <li className="font-semibold">
-            <NavLink to="/login">Login</NavLink>
+            <NavLink className="rounded" to="/login">
+              Login
+            </NavLink>
           </li>
           <li className="font-semibold">
-            <NavLink to="/register">Register</NavLink>
+            <NavLink className="rounded" to="/register">
+              Register
+            </NavLink>
           </li>
         </>
       )}
