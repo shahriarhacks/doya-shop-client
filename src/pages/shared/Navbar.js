@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logout()
+      .then(() => {
+        localStorage.removeItem("access-token");
+      })
+      .catch((err) => console.log(err));
+  };
+
   const menuItems = (
     <>
       <li className="font-semibold">
@@ -20,9 +31,26 @@ const Navbar = () => {
       <li className="font-semibold">
         <NavLink to="/contact">Contact</NavLink>
       </li>
-      <li className="font-semibold">
-        <NavLink to="/login">Login</NavLink>
-      </li>
+      {user && user.uid ? (
+        <>
+          <li className="font-semibold">
+            <NavLink to="/dashboard">Dashboard</NavLink>
+          </li>
+
+          <li className="font-semibold">
+            <button onClick={handleLogOut}>Log Out</button>
+          </li>
+        </>
+      ) : (
+        <>
+          <li className="font-semibold">
+            <NavLink to="/login">Login</NavLink>
+          </li>
+          <li className="font-semibold">
+            <NavLink to="/register">Register</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   return (
