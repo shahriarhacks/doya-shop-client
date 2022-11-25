@@ -5,7 +5,7 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import useToken from "../../hooks/useToken";
 
 const Register = () => {
-  const { createUser, updateUser } = useContext(AuthContext);
+  const { createUser, updateUser, loginGoogle } = useContext(AuthContext);
   const [signUpError, setSignUpError] = useState("");
   const [createdUserEmail, setCreatedUserEmail] = useState("");
   const { token } = useToken(createdUserEmail);
@@ -34,6 +34,17 @@ const Register = () => {
             savedUser(data?.name, data?.email, data?.role);
           })
           .catch((err) => setSignUpError(err.message));
+      })
+      .catch((err) => setSignUpError(err.message));
+  };
+
+  const googleLogin = () => {
+    setSignUpError("");
+    loginGoogle()
+      .then((result) => {
+        const user = result.user;
+        const role = "user";
+        savedUser(user?.displayName, user?.email, role);
       })
       .catch((err) => setSignUpError(err.message));
   };
@@ -143,7 +154,10 @@ const Register = () => {
           </Link>
         </p>
         <div className="divider">OR</div>
-        <button className="btn btn-outline w-full hover:rounded-full">
+        <button
+          onClick={googleLogin}
+          className="btn btn-outline w-full hover:rounded-full"
+        >
           CONTINUE WITH GOOGLE
         </button>
       </div>

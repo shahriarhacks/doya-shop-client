@@ -5,7 +5,7 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import useToken from "../../hooks/useToken";
 
 const Login = () => {
-  const { loginUser } = useContext(AuthContext);
+  const { loginUser, loginGoogle } = useContext(AuthContext);
   const [loginError, setLoginError] = useState("");
   const [loginUserEmail, setLoginUserEmail] = useState("");
   const { token } = useToken(loginUserEmail);
@@ -33,6 +33,17 @@ const Login = () => {
       })
       .catch((err) => setLoginError(err.message));
   };
+
+  const googleLogin = () => {
+    setLoginError("");
+    loginGoogle()
+      .then((result) => {
+        const user = result.user;
+        setLoginUserEmail(user?.email);
+      })
+      .catch((err) => setLoginError(err.message));
+  };
+
   return (
     <div className="h-[800px] flex justify-center items-center">
       <div className="w-96 p-7">
@@ -89,7 +100,10 @@ const Login = () => {
           </Link>
         </p>
         <div className="divider">OR</div>
-        <button className="btn btn-outline w-full hover:rounded-full">
+        <button
+          onClick={googleLogin}
+          className="btn btn-outline w-full hover:rounded-full"
+        >
           CONTINUE WITH GOOGLE
         </button>
       </div>

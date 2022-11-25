@@ -60,11 +60,6 @@ const Navbar = () => {
               Login
             </NavLink>
           </li>
-          <li className="font-semibold">
-            <NavLink className="rounded" to="/register">
-              Register
-            </NavLink>
-          </li>
         </>
       )}
     </>
