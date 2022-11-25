@@ -2,9 +2,16 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../layout/DashboardLayout";
 import Root from "../layout/Root";
 import About from "../pages/about/About";
-import AddCategory from "../pages/dashboard/AddCategory";
-import AddPhone from "../pages/dashboard/AddPhone";
-import PurchasedProduct from "../pages/dashboard/PurchasedProduct";
+import AddCategory from "../pages/dashboard/Admin/AddCategory";
+import AllBuyers from "../pages/dashboard/Admin/AllBuyers";
+import AllSellers from "../pages/dashboard/Admin/AllSellers";
+import AllUsers from "../pages/dashboard/Admin/AllUsers";
+import ManageCategory from "../pages/dashboard/Admin/ManageCategory";
+import PurchasedProduct from "../pages/dashboard/Buyers/PurchasedProduct";
+import Wishlist from "../pages/dashboard/Buyers/Wishlist";
+import AddPhone from "../pages/dashboard/Seller/AddPhone";
+import AllBuyer from "../pages/dashboard/Seller/AllBuyer";
+import ManagePhone from "../pages/dashboard/Seller/ManagePhone";
 import Home from "../pages/home/Home";
 import Login from "../pages/login-register/Login";
 import Register from "../pages/login-register/Register";
@@ -62,8 +69,12 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "/dashboard/home",
+        path: "/dashboard/history",
         element: <PurchasedProduct />,
+      },
+      {
+        path: "/dashboard/wishlist",
+        element: <Wishlist />,
       },
       {
         path: "/dashboard/add-phones",
@@ -74,10 +85,58 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/dashboard/manage-phones",
+        element: (
+          <SellerRoute>
+            <ManagePhone />
+          </SellerRoute>
+        ),
+      },
+      {
+        path: "/dashboard/ur-buyers",
+        element: (
+          <SellerRoute>
+            <AllBuyer />
+          </SellerRoute>
+        ),
+      },
+      {
         path: "/dashboard/add-category",
         element: (
           <AdminRoute>
             <AddCategory />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/manage-category",
+        element: (
+          <AdminRoute>
+            <ManageCategory />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/manage-users",
+        element: (
+          <AdminRoute>
+            <AllUsers />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/manage-sellers",
+        element: (
+          <AdminRoute>
+            <AllSellers />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/manage-buyers",
+        element: (
+          <AdminRoute>
+            <AllBuyers />
           </AdminRoute>
         ),
       },

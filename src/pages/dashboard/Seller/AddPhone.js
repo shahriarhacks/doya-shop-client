@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { useForm } from "react-hook-form";
-import useHeaderGET from "../../hooks/useHeaderGET";
-import Loading from "../shared/Loading";
+import useHeaderGET from "../../../hooks/useHeaderGET";
+import Loading from "../../shared/Loading";
 
 const AddPhone = () => {
   const header = useHeaderGET();
@@ -212,7 +212,7 @@ const AddPhone = () => {
         </div>
 
         <input
-          className="btn btn-primary btn-outline hover:rounded-full"
+          className="btn btn-primary btn-outline w-full hover:rounded-full"
           type="submit"
           value="Add Phone"
         />

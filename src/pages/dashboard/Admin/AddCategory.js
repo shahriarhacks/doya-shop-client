@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import useHeadersPOST from "../../hooks/useHeaderPOST";
+import useHeadersPOST from "../../../hooks/useHeaderPOST";
 
 const AddCategory = () => {
   const imgBbKey = process.env.REACT_APP_IMGbb_KEY;

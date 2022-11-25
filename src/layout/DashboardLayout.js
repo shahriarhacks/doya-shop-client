@@ -29,9 +29,14 @@ const DashboardLayout = () => {
           <ul className="menu p-4 w-80 text-base-content">
             {/* <!-- Sidebar content here --> */}
             {isAdmin || isSeller || (
-              <li>
-                <NavLink to="/dashboard/home">Purchased History</NavLink>
-              </li>
+              <>
+                <li>
+                  <NavLink to="/dashboard/history">Purchased History</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/wishlist">Wishlist</NavLink>
+                </li>
+              </>
             )}
             {isAdmin && (
               <>
@@ -39,13 +44,18 @@ const DashboardLayout = () => {
                   <NavLink to="/dashboard/add-category">Add Category</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/users">All Users</NavLink>
+                  <NavLink to="/dashboard/manage-category">
+                    Manage Category
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/sellers">All Sellers</NavLink>
+                  <NavLink to="/dashboard/manage-users">All Users</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/buyers">All Buyers</NavLink>
+                  <NavLink to="/dashboard/manage-sellers">All Sellers</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/manage-buyers">All Buyers</NavLink>
                 </li>
               </>
             )}
@@ -55,12 +65,10 @@ const DashboardLayout = () => {
                   <NavLink to="/dashboard/add-phones">Add Phones</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/manage-product">
-                    Manage Phones
-                  </NavLink>
+                  <NavLink to="/dashboard/manage-phones">Manage Phones</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/buyer">All Buyers</NavLink>
+                  <NavLink to="/dashboard/ur-buyers">All Buyers</NavLink>
                 </li>
               </>
             )}
