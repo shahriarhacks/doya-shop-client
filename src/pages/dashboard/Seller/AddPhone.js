@@ -1,11 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import useHeaderGET from "../../../hooks/useHeaderGET";
 import Loading from "../../shared/Loading";
+import { format } from "date-fns";
+import useHeadersPOST from "../../../hooks/useHeaderPOST";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthProvider";
+import { toast } from "react-toastify";
 
 const AddPhone = () => {
   const header = useHeaderGET();
+  const headers = useHeadersPOST();
+  const imgBbKey = process.env.REACT_APP_IMGbb_KEY;
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
@@ -32,7 +42,43 @@ const AddPhone = () => {
   });
 
   const handelAddPhone = (data) => {
-    console.log(data);
+    const date = new Date();
+    const time = format(date, "PP");
+    const image = data.image[0];
+    const formData = new FormData();
+    formData.append("image", image);
+    const url = `https://api.imgbb.com/1/upload?key=${imgBbKey}`;
+
+    const seller = {
+      name: user?.displayName,
+      email: user?.email,
+    };
+
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imageData) => {
+        if (imageData.success) {
+          console.log(data);
+          const image = imageData?.data?.url;
+          const phone = { ...data, image, time, seller };
+          fetch(`${process.env.REACT_APP_API_URl}/phones`, {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify(phone),
+          })
+            .then((res) => res.json())
+            .then((result) => {
+              if (result.acknowledged) {
+                toast.success(`${data?.phoneName} added success as a Product`);
+                navigate("/dashboard/manage-phones");
+              }
+            });
+          reset();
+        }
+      });
   };
 
   if (isLoading) {
@@ -80,7 +126,7 @@ const AddPhone = () => {
             </label>
             <input
               {...register("originalPrice", {
-                required: "Resale Price is Required",
+                required: "Original Price is Required",
               })}
               type="text"
               className="input input-ghost w-full  input-bordered"
@@ -95,7 +141,7 @@ const AddPhone = () => {
             </label>
             <input
               {...register("purchaseYear", {
-                required: "Resale Price is Required",
+                required: "Purchase year is Required",
               })}
               type="text"
               className="input input-ghost w-full  input-bordered"
@@ -110,7 +156,7 @@ const AddPhone = () => {
             </label>
             <input
               {...register("usedTime", {
-                required: "Resale Price is Required",
+                required: "Used time  is Required",
               })}
               type="text"
               className="input input-ghost w-full  input-bordered"
@@ -125,7 +171,7 @@ const AddPhone = () => {
             </label>
             <input
               {...register("sellerLocation", {
-                required: "Resale Price is Required",
+                required: "Seller location is Required",
               })}
               type="text"
               className="input input-ghost w-full  input-bordered"
@@ -141,7 +187,7 @@ const AddPhone = () => {
             </label>
             <input
               {...register("sellerPhone", {
-                required: "Resale Price is Required",
+                required: "Seller Phone Number is Required",
               })}
               type="text"
               className="input input-ghost w-full  input-bordered"
@@ -202,7 +248,7 @@ const AddPhone = () => {
           </label>
           <textarea
             {...register("description", {
-              required: "Resale Price is Required",
+              required: "Description is Required",
             })}
             className="textarea textarea-bordered h-44 my-4 w-full"
           ></textarea>

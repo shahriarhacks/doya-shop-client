@@ -1,11 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useHeadersPOST from "../../../hooks/useHeaderPOST";
 
 const AddCategory = () => {
   const imgBbKey = process.env.REACT_APP_IMGbb_KEY;
   const headers = useHeadersPOST();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -44,6 +46,7 @@ const AddCategory = () => {
                 toast.success(
                   `${data?.categoryName} added as a category success`
                 );
+                navigate("/dashboard/manage-category");
                 reset();
               }
             });
