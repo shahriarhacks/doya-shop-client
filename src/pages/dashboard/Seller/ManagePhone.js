@@ -48,11 +48,31 @@ const ManagePhone = () => {
   };
 
   const handleSold = (id) => {
-    console.log(id);
+    fetch(`${process.env.REACT_APP_API_URl}/phones/for-sold/${id}`, {
+      method: "PATCH",
+      headers: header,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.acknowledged) {
+          refetch();
+          toast.success("Product Sold Successfully");
+        }
+      });
   };
 
   const handleUnSold = (id) => {
-    console.log(id);
+    fetch(`${process.env.REACT_APP_API_URl}/phones/for-unsold/${id}`, {
+      method: "PATCH",
+      headers: header,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.acknowledged) {
+          refetch();
+          toast.success("Product Unsold Successfully");
+        }
+      });
   };
 
   if (isLoading) {
