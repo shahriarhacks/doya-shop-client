@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useHeadersPOST from "../../../hooks/useHeaderPOST";
+import useTitle from "../../../hooks/useTitle";
 
 const AddCategory = () => {
+  useTitle("Add Category");
   const imgBbKey = process.env.REACT_APP_IMGbb_KEY;
   const headers = useHeadersPOST();
   const navigate = useNavigate();

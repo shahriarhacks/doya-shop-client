@@ -2,9 +2,11 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 import useToken from "../../hooks/useToken";
 
 const Register = () => {
+  useTitle("Register");
   const { createUser, updateUser, loginGoogle } = useContext(AuthContext);
   const [signUpError, setSignUpError] = useState("");
   const [createdUserEmail, setCreatedUserEmail] = useState("");

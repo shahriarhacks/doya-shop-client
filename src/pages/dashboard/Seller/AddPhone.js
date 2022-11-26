@@ -8,8 +8,10 @@ import useHeadersPOST from "../../../hooks/useHeaderPOST";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import { toast } from "react-toastify";
+import useTitle from "../../../hooks/useTitle";
 
 const AddPhone = () => {
+  useTitle("Add Product");
   const header = useHeaderGET();
   const headers = useHeadersPOST();
   const imgBbKey = process.env.REACT_APP_IMGbb_KEY;
