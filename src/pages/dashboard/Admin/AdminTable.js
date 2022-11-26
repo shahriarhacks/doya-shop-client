@@ -71,7 +71,7 @@ const AdminTable = ({ users, refetch }) => {
         </tbody>
       </table>
       <ConfirmationModal
-        deleteAction={handleDelete}
+        action={handleDelete}
         closeModal={closeModal}
         modalData={deleteUser}
         title={`Are you sure you want to delete ${deleteUser?.role} ${deleteUser?.name}`}

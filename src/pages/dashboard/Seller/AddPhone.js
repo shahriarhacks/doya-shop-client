@@ -71,7 +71,8 @@ const AddPhone = () => {
 
     const sellerName = user?.displayName;
     const email = user?.email;
-    const status = fetchedUser?.status;
+    const sellerStatus = fetchedUser?.status;
+    const stokeStatus = "unsold";
 
     fetch(url, {
       method: "POST",
@@ -82,7 +83,15 @@ const AddPhone = () => {
         if (imageData.success) {
           console.log(data);
           const image = imageData?.data?.url;
-          const phone = { ...data, image, time, email, sellerName, status };
+          const phone = {
+            ...data,
+            image,
+            time,
+            email,
+            sellerName,
+            sellerStatus,
+            stokeStatus,
+          };
           fetch(`${process.env.REACT_APP_API_URl}/phones`, {
             method: "POST",
             headers: headers,
