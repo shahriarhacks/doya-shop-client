@@ -74,7 +74,9 @@ const Register = () => {
       <div className="w-96 p-7">
         <h2 className="text-xl text-center">Register</h2>
         <div>
-          {signUpError && <p className="text-red-600">{signUpError}</p>}
+          {signUpError && (
+            <p className="text-red-600 text-center">{signUpError}</p>
+          )}
         </div>
         <form onSubmit={handleSubmit(handleRegister)}>
           <div className="form-control w-full max-w-xs">

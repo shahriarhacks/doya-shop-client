@@ -69,11 +69,9 @@ const AddPhone = () => {
     formData.append("image", image);
     const url = `https://api.imgbb.com/1/upload?key=${imgBbKey}`;
 
-    const seller = {
-      name: user?.displayName,
-      email: user?.email,
-      status: fetchedUser?.status,
-    };
+    const sellerName = user?.displayName;
+    const email = user?.email;
+    const status = fetchedUser?.status;
 
     fetch(url, {
       method: "POST",
@@ -84,7 +82,7 @@ const AddPhone = () => {
         if (imageData.success) {
           console.log(data);
           const image = imageData?.data?.url;
-          const phone = { ...data, image, time, seller };
+          const phone = { ...data, image, time, email, sellerName, status };
           fetch(`${process.env.REACT_APP_API_URl}/phones`, {
             method: "POST",
             headers: headers,

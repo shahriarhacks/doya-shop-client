@@ -50,7 +50,11 @@ const Login = () => {
     <div className="h-[800px] flex justify-center items-center">
       <div className="w-96 p-7">
         <h2 className="text-xl text-center">Login</h2>
-        <div>{loginError && <p className="text-red-600">{loginError}</p>}</div>
+        <div>
+          {loginError && (
+            <p className="text-red-600 text-center">{loginError}</p>
+          )}
+        </div>
         <form onSubmit={handleSubmit(handleLogin)}>
           <div className="form-control w-full max-w-xs">
             <label className="label">
