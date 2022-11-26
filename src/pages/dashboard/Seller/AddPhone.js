@@ -43,6 +43,24 @@ const AddPhone = () => {
     },
   });
 
+  const { data: fetchedUser, isLoading: loading } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      try {
+        const res = await fetch(
+          `${process.env.REACT_APP_API_URl}/users/for-seller?email=${user?.email}`,
+          {
+            headers: header,
+          }
+        );
+        const data = await res.json();
+        return data;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  });
+
   const handelAddPhone = (data) => {
     const date = new Date();
     const time = format(date, "PP");
@@ -54,6 +72,7 @@ const AddPhone = () => {
     const seller = {
       name: user?.displayName,
       email: user?.email,
+      status: fetchedUser?.status,
     };
 
     fetch(url, {
@@ -86,7 +105,10 @@ const AddPhone = () => {
   if (isLoading) {
     return <Loading />;
   }
-
+  if (loading) {
+    return <Loading />;
+  }
+  console.log(fetchedUser);
   return (
     <section className="m-10">
       <form onSubmit={handleSubmit(handelAddPhone)}>

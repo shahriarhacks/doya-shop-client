@@ -8,7 +8,11 @@ import AdminTable from "./AdminTable";
 const AllUsers = () => {
   useTitle("All Users");
   const header = useHeaderGET();
-  const { data: users, isLoading } = useQuery({
+  const {
+    data: users,
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       try {
@@ -29,7 +33,7 @@ const AllUsers = () => {
 
   return (
     <div className="overflow-x-auto">
-      <AdminTable users={users} />
+      <AdminTable users={users} refetch={refetch} />
     </div>
   );
 };

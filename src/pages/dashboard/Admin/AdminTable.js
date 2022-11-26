@@ -1,13 +1,27 @@
 import React from "react";
+import { toast } from "react-toastify";
+import useHeaderGET from "../../../hooks/useHeaderGET";
 import AdminTableBody from "./AdminTableBody";
 
-const AdminTable = ({ users }) => {
+const AdminTable = ({ users, refetch }) => {
+  const header = useHeaderGET();
+
   const handleDelete = (user) => {
     console.log(user);
   };
 
-  const handleUpdate = (user) => {
-    console.log(user);
+  const handleUpdate = (id) => {
+    fetch(`${process.env.REACT_APP_API_URl}/users/admin/${id}`, {
+      method: "PUT",
+      headers: header,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.acknowledged) {
+          refetch();
+          toast.success("Seller Verified successfully");
+        }
+      });
   };
 
   return (
