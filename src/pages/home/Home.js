@@ -8,8 +8,8 @@ import Loading from "../shared/Loading";
 const Home = () => {
   useTitle("Home");
 
-  const { data: advertise = [], isLoading } = useQuery({
-    queryKey: ["phones/ads/home"],
+  const { data: advertise, isLoading } = useQuery({
+    queryKey: ["phones/ads"],
     queryFn: async () => {
       const res = await fetch(`${process.env.REACT_APP_API_URl}/phones/ads`);
       const data = await res.json();
