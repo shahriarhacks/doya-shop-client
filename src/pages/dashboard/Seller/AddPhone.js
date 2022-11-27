@@ -250,8 +250,8 @@ const AddPhone = () => {
               })}
               className="select select-ghost w-full max-w-xs"
             >
-              {options?.map((option, idx) => (
-                <option key={option?._id} value={idx}>
+              {options?.map((option) => (
+                <option key={option?._id} value={option?._id}>
                   {option?.name}
                 </option>
               ))}

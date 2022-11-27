@@ -17,6 +17,7 @@ const Card = ({ data }) => {
     time,
     description,
     sellerStatus,
+    stokeStatus,
   } = data;
   const { user } = useContext(AuthContext);
   return (
@@ -116,12 +117,17 @@ const Card = ({ data }) => {
             </button>
           </div>
           <div className="flex space-x-2 text-sm text-gray-400">
-            <label
-              htmlFor="booking-modal"
-              className="btn btn-sm btn-outline border-0 hover:rounded-full bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400"
-            >
-              Book Now
-            </label>
+            {stokeStatus === "unsold" && (
+              <label
+                htmlFor="booking-modal"
+                className="btn btn-sm btn-outline border-0 hover:rounded-full bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400"
+              >
+                Book Now
+              </label>
+            )}
+            {stokeStatus === "sold" && (
+              <p className="font-bold">Product Already Sold</p>
+            )}
           </div>
         </div>
       </div>

@@ -3,12 +3,14 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/AuthProvider";
+import useHeadersPOST from "../../hooks/useHeaderPOST";
 
 const BookingModal = ({ phone }) => {
   const { phoneName, resalePrice } = phone;
   const date = format(new Date(), "PP");
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+  const headers = useHeadersPOST();
 
   const handleBooking = (event) => {
     event.preventDefault();
@@ -28,12 +30,9 @@ const BookingModal = ({ phone }) => {
       phone,
     };
 
-    console.log(booking);
     fetch(`${process.env.REACT_APP_API_URl}/bookings`, {
       method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
+      headers: headers,
       body: JSON.stringify(booking),
     })
       .then((res) => res.json())
