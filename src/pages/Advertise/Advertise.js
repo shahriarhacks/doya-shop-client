@@ -1,15 +1,13 @@
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import useTitle from "../../hooks/useTitle";
-import Banner from "./components/Banner";
-import Advertised from "./components/Advertised";
-import { useQuery } from "@tanstack/react-query";
 import Loading from "../shared/Loading";
+import Phones from "../shared/Phones";
 
-const Home = () => {
-  useTitle("Home");
-
+const Advertise = () => {
+  useTitle("Advertisement");
   const { data: advertise = [], isLoading } = useQuery({
-    queryKey: ["phones/ads/home"],
+    queryKey: ["phones/ads"],
     queryFn: async () => {
       const res = await fetch(`${process.env.REACT_APP_API_URl}/phones/ads`);
       const data = await res.json();
@@ -20,13 +18,11 @@ const Home = () => {
   if (isLoading) {
     return <Loading />;
   }
-
   return (
-    <>
-      <Banner />
-      {advertise.length >= 0 && <Advertised phones={advertise} />}
-    </>
+    <div>
+      <Phones phones={advertise} />
+    </div>
   );
 };
 
-export default Home;
+export default Advertise;

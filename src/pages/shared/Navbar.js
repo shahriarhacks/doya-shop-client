@@ -27,6 +27,11 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li className="font-semibold">
+        <NavLink className="rounded" to="/ads">
+          Advertisement
+        </NavLink>
+      </li>
+      <li className="font-semibold">
         <NavLink className="rounded" to="/categories">
           Categories
         </NavLink>

@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../layout/DashboardLayout";
 import Root from "../layout/Root";
 import About from "../pages/about/About";
+import Advertise from "../pages/Advertise/Advertise";
 import AddCategory from "../pages/dashboard/Admin/AddCategory";
 import AllBuyers from "../pages/dashboard/Admin/AllBuyers";
 import AllSellers from "../pages/dashboard/Admin/AllSellers";
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/categories",
         element: <Catagories />,
+      },
+      {
+        path: "/ads",
+        element: <Advertise />,
       },
       {
         path: "/blog",
