@@ -41,6 +41,8 @@ Toast-> [React Tostify](https://www.npmjs.com/package/react-toastify)
 Photo View-> [React Photo View](https://react-photo-view.vercel.app/en-US)
 Firebase-> [Firebase](https://www.npmjs.com/package/firebase)
 Spinners-> [React Spinners](https://www.npmjs.com/package/react-spinners)
+React-Hook-Form->[Hook Form](https://react-hook-form.com/get-started)
+React Query->[Query]()
 
 ## Firebase
 
