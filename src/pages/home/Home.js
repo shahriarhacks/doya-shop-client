@@ -5,6 +5,8 @@ import Advertised from "./components/Advertised";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../shared/Loading";
 import Catagories from "./Catagories";
+import Contact from "../shared/Contact";
+import Subscribed from "../shared/Subscribed";
 
 const Home = () => {
   useTitle("Home");
@@ -27,6 +29,8 @@ const Home = () => {
       <Banner />
       {advertise.length >= 0 && <Advertised phones={advertise} />}
       <Catagories />
+      <Contact />
+      <Subscribed />
     </>
   );
 };
