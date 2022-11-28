@@ -3,6 +3,8 @@ import DashboardLayout from "../layout/DashboardLayout";
 import Root from "../layout/Root";
 import About from "../pages/about/About";
 import Advertise from "../pages/Advertise/Advertise";
+import Category from "../pages/Category/Category";
+import SingleCategory from "../pages/Category/SingleCategory";
 import AddCategory from "../pages/dashboard/Admin/AddCategory";
 import AllBuyers from "../pages/dashboard/Admin/AllBuyers";
 import AllSellers from "../pages/dashboard/Admin/AllSellers";
@@ -17,7 +19,7 @@ import Home from "../pages/home/Home";
 import Login from "../pages/login-register/Login";
 import Register from "../pages/login-register/Register";
 import Blog from "../pages/others/Blog";
-import Catagories from "../pages/shared/Catagories";
+
 import Contact from "../pages/shared/Contact";
 import ErrorRoute from "../pages/shared/ErrorRoute";
 import AdminRoute from "./AdminRoute";
@@ -40,7 +42,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/categories",
-        element: <Catagories />,
+        element: <Category />,
       },
       {
         path: "/ads",
@@ -61,6 +63,16 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "category/:id",
+        element: (
+          <PrivateRoute>
+            <SingleCategory />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`${process.env.REACT_APP_API_URl}/categories/${params.id}`),
       },
     ],
   },
