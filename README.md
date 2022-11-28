@@ -42,7 +42,8 @@ Photo View-> [React Photo View](https://react-photo-view.vercel.app/en-US)
 Firebase-> [Firebase](https://www.npmjs.com/package/firebase)
 Spinners-> [React Spinners](https://www.npmjs.com/package/react-spinners)
 React-Hook-Form->[Hook Form](https://react-hook-form.com/get-started)
-React Query->[Query]()
+React Query->[Query](https://tanstack.com/query/v4/?from=reactQueryV3&original=https://react-query-v3.tanstack.com/)
+HTTP:AXIOS->[axios](https://axios-http.com/docs/intro)
 
 ## Firebase
 
