@@ -10,6 +10,7 @@ import AllBuyers from "../pages/dashboard/Admin/AllBuyers";
 import AllSellers from "../pages/dashboard/Admin/AllSellers";
 import AllUsers from "../pages/dashboard/Admin/AllUsers";
 import ManageCategory from "../pages/dashboard/Admin/ManageCategory";
+import Payment from "../pages/dashboard/Buyers/Payment";
 import PurchasedProduct from "../pages/dashboard/Buyers/PurchasedProduct";
 import Wishlist from "../pages/dashboard/Buyers/Wishlist";
 import AddPhone from "../pages/dashboard/Seller/AddPhone";
@@ -92,6 +93,12 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/wishlist",
         element: <Wishlist />,
+      },
+      {
+        path: "/dashboard/history/payment/:id",
+        element: <Payment />,
+        loader: ({ params }) =>
+          fetch(`${process.env.REACT_APP_API_URl}/phones/${params.id}`),
       },
       {
         path: "/dashboard/add-phones",
