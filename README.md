@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Live Link
 
-Hosted in Firebase Hosting -> [Doya Shop](https://doya-shop.web.app/)
+Hosted in Firebase Hosting uses firebase
 
 ## Server Side Vercel Link
 
