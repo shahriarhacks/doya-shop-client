@@ -3,7 +3,7 @@ import useTitle from "../../hooks/useTitle";
 
 const About = () => {
   useTitle("About");
-  return <div></div>;
+  return <div>This is About Page</div>;
 };
 
 export default About;
