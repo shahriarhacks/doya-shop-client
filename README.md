@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Live Link
 
-Hosted in Firebase Hosting uses firebase
+Hosted in Firebase Hosting -> [Doya Shop](https://doya-shop.web.app/)
 
 ## Server Side Vercel Link
 
@@ -38,7 +38,6 @@ For Tailwind Component-> [Mamba UI](https://www.mambaui.com/)
 Logo & Favicon -> [FlatIcon](https://www.flaticon.com/)
 Icon->[React Icon](https://react-icons.github.io/react-icons)
 Toast-> [React Tostify](https://www.npmjs.com/package/react-toastify)
-Photo View-> [React Photo View](https://react-photo-view.vercel.app/en-US)
 Firebase-> [Firebase](https://www.npmjs.com/package/firebase)
 Spinners-> [React Spinners](https://www.npmjs.com/package/react-spinners)
 React-Hook-Form->[Hook Form](https://react-hook-form.com/get-started)
