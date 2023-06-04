@@ -65,3 +65,29 @@ Stripe Payment Method ->[STRIPE](https://stripe.com/)
 adminEmail: admin@doyashop.com
 <br/>
 adminPassword: HRD!1234
+
+
+
+## Group 05 (OC ENV.)
+
+### 530270 = SHAHRIAR AHMED (The Leader and Creator)
+
+530272 = TANVIR AHMED SHISHIR
+
+530273 = MD. LIKHON AL MAMUN
+
+530274 = MD. SAKIBUL ISLAM
+
+530275 = MD. SHOHANUR RAHMAN SIAM
+
+530276 = MD.KABIRUL ISLAM
+
+530277 = SREE SODIB KUMAR DAS
+
+530278 = MD. MAHABUB UL ISLAM SABBIR
+
+530280 = MD. BADHON
+
+#### 530284 = MD. JAKAREYA ALAM FAHIM (Leader)
+
+533122    = MST. JUI AKTER
