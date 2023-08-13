@@ -1,6 +1,6 @@
-# Doya Shop
+# [Doya Shop](https://doya-shop.web.app/)
 
-Buy and Sell Bazar
+Buy and Sell Bazar. You can buy here and you can sell here.
 
 # Getting Started with Create React App
 
@@ -12,15 +12,15 @@ Hosted in Firebase Hosting -> [Doya Shop](https://doya-shop.web.app/)
 
 ## Server Side Vercel Link
 
-Uses Vercel
+Uses Vercel for hosting -> [Code Link](https://github.com/ourShahriar/doya-shop-server)
 
 ## Database NoSQL
 
-MongoDB
+MongoDB -> [Ref](https://www.mongodb.com/atlas/database)
 
 ## Server Side Language
 
-NodeJS , ExpressJS
+NodeJS -> [Ref](https://nodejs.org/en) , ExpressJS -> [Ref](https://expressjs.com/)
 
 ## React Router Dom v6.4
 
@@ -69,8 +69,9 @@ adminPassword: HRD!1234
 
 
 # Group 05 (OC ENV.)
+## Team name: Alone Universe.
 
-### 530270 = SHAHRIAR AHMED (The Leader and Creator)
+### 530270 = SHAHRIAR AHMED (The Leader, Creator, Designer & Developer)
 
 530272 = TANVIR AHMED SHISHIR
 
